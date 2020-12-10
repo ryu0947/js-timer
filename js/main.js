@@ -10,9 +10,10 @@
   let startTime;
   let timeLimit = 5;
   let timeoutId;
+  let elapsedTime = 0;
 
   // タイマーを画面に書き出す処理
-  function updateTimer(t){
+  function updateTimer(t) {
     const d = new Date(t);
     const m = String(d.getMinutes()).padStart(2, "0");
     const s = String(d.getSeconds()).padStart(2, "0");
@@ -21,7 +22,7 @@
 
   // タイマーのカウントダウンの処理
   function countUp() {
-    const runningTime = timeLimit * 1000 - (Date.now() - startTime);
+    const runningTime = timeLimit * 1000 - elapsedTime - (Date.now() - startTime);
     updateTimer(runningTime);
     timeoutId = setTimeout(() => {
       countUp();
@@ -33,5 +34,12 @@
     startTime = Date.now();
     comment.textContent = "Working...";
     countUp();
+  });
+
+  // Stopボタンを押した時の処理
+  stop.addEventListener("click", () => {
+    clearTimeout(timeoutId);
+    elapsedTime += Date.now() - startTime;
+    comment.textContent = "Stop";
   });
 }
