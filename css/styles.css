@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-color: #333333;
+    font-family: メイリオ, Meiryo, "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", sans-serif;
+    letter-spacing: 0.2em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.count-timer {
+    margin-bottom: 16px;
+    font-size: 48px;
+    font-weight: 600;
+    color: #333333;
+    text-shadow: #ffffff 1px 1px 0px, #ffffff -1px 1px 0px, #ffffff 1px -1px 0px, #ffffff -1px -1px 0px;
+}
