@@ -42,4 +42,10 @@
     elapsedTime += Date.now() - startTime;
     comment.textContent = "Stop";
   });
+
+  // Resetボタンを押した時の処理
+  reset.addEventListener("click", () => {
+    elapsedTime = 0;
+    countTimer.textContent = "00:05";
+  });
 }
