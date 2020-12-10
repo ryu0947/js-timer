@@ -11,13 +11,15 @@
   let timeLimit = 5;
   let timeoutId;
 
+  // タイマーを画面に書き出す処理
   function updateTimer(t){
     const d = new Date(t);
-    const m = d.getMinutes();
-    const s = d.getSeconds();
+    const m = String(d.getMinutes()).padStart(2, "0");
+    const s = String(d.getSeconds()).padStart(2, "0");
     countTimer.textContent = `${m}:${s}`;
   }
 
+  // タイマーのカウントダウンの処理
   function countUp() {
     const runningTime = timeLimit * 1000 - (Date.now() - startTime);
     updateTimer(runningTime);
