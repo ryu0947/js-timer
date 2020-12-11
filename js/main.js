@@ -41,6 +41,9 @@
       start.disabled = false;
       stop.disabled = true;
       reset.disabled = true;
+      start.style.opacity = 1;
+      stop.style.opacity = 0.4;
+      reset.style.opacity = 0.4;
   }
 
   // カウント中のボタンの状態
@@ -48,6 +51,9 @@
       start.disabled = true;
       stop.disabled = false;
       reset.disabled = true;
+      start.style.opacity = 0.4;
+      stop.style.opacity = 1;
+      reset.style.opacity = 0.4;
   }
 
   // カウントダウンが止まっている時のボタンの状態
@@ -55,6 +61,9 @@
       start.disabled = false;
       stop.disabled = true;
       reset.disabled = false;
+      start.style.opacity = 1;
+      stop.style.opacity = 0.4;
+      reset.style.opacity = 1;
   }
 
   setButtonStateInitial();
@@ -80,5 +89,6 @@
     setButtonStateInitial();
     elapsedTime = 0;
     countTimer.textContent = "00:05";
+    comment.textContent = "Click Start";
   });
 }
