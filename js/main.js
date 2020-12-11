@@ -1,10 +1,10 @@
 "use strict";
 
 {
-  const start = document.getElementById("start");
-  const stop = document.getElementById("stop");
-  const reset = document.getElementById("reset");
-  const comment = document.getElementById("comment");
+  const start = document.getElementById("js-start");
+  const stop = document.getElementById("js-stop");
+  const reset = document.getElementById("js-reset");
+  const comment = document.getElementById("js-comment");
   const countTimer = document.getElementById("js-count-timer");
 
   let startTime;
