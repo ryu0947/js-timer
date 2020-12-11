@@ -1,7 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  position: relative;
   background-color: #333333;
   font-family: メイリオ, Meiryo, "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3",
     "Hiragino Kaku Gothic ProN", sans-serif;
@@ -11,8 +10,45 @@ body {
 }
 
 .container {
+  position: relative;
   text-align: center;
   margin-top: 20px;
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  padding: 30px;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  color: #333333;
+  z-index: 2;
+}
+
+.popup > p {
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+.btn-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup-btn {
+  width: 100px;
+  text-align: center;
+  padding: 12px 25px;
+  background-color: #333333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.popup-btn {
+  background-color: #333333;
+  color: #fff;
 }
 
 .count-timer {
