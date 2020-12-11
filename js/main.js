@@ -23,7 +23,14 @@
   // タイマーのカウントダウンの処理
   function countUp() {
     const runningTime = timeLimit * 1000 - elapsedTime - (Date.now() - startTime);
+    
+    if(runningTime < 0){
+        clearTimeout(timeoutId);
+        return;
+    }
+
     updateTimer(runningTime);
+
     timeoutId = setTimeout(() => {
       countUp();
     }, 10);
