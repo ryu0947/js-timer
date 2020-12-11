@@ -36,8 +36,32 @@
     }, 10);
   }
 
+  // 最初のボタンの状態 
+  function setButtonStateInitial() {
+      start.disabled = false;
+      stop.disabled = true;
+      reset.disabled = true;
+  }
+
+  // カウント中のボタンの状態
+  function setButtonStateRunning() {
+      start.disabled = true;
+      stop.disabled = false;
+      reset.disabled = true;
+  }
+
+  // カウントダウンが止まっている時のボタンの状態
+  function setButtonStateStopped() {
+      start.disabled = false;
+      stop.disabled = true;
+      reset.disabled = false;
+  }
+
+  setButtonStateInitial();
+
   // Startボタンを押した時の処理
   start.addEventListener("click", () => {
+    setButtonStateRunning();
     startTime = Date.now();
     comment.textContent = "Working...";
     countUp();
@@ -45,6 +69,7 @@
 
   // Stopボタンを押した時の処理
   stop.addEventListener("click", () => {
+    setButtonStateStopped();
     clearTimeout(timeoutId);
     elapsedTime += Date.now() - startTime;
     comment.textContent = "Stop";
@@ -52,6 +77,7 @@
 
   // Resetボタンを押した時の処理
   reset.addEventListener("click", () => {
+    setButtonStateInitial();
     elapsedTime = 0;
     countTimer.textContent = "00:05";
   });
