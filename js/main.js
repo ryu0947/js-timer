@@ -6,9 +6,12 @@
   const reset = document.getElementById("js-reset");
   const comment = document.getElementById("js-comment");
   const countTimer = document.getElementById("js-count-timer");
+  const restPopup = document.getElementById("js-rest-popup");
+  const rest = document.getElementById("js-rest-btn");
+  const finish = document.getElementById("js-finish-btn");
 
   let startTime;
-  let timeLimit = 5;
+  let timeLimit = 10;
   let timeoutId;
   let elapsedTime = 0;
 
@@ -22,11 +25,22 @@
 
   // タイマーのカウントダウンの処理
   function countUp() {
-    const runningTime = timeLimit * 1000 - elapsedTime - (Date.now() - startTime);
-    
-    if(runningTime < 0){
-        clearTimeout(timeoutId);
-        return;
+    const runningTime =
+      timeLimit * 1000 - elapsedTime - (Date.now() - startTime);
+
+    if (runningTime < 0) {
+      clearTimeout(timeoutId);
+      setButtonStateInitial();
+      
+      switch (timeLimit) {
+        case 5:
+          break;
+        case 10:
+          restPopup.classList.add("show");
+          break;
+      }
+      comment.textContent = "Select";
+      return;
     }
 
     updateTimer(runningTime);
@@ -36,34 +50,34 @@
     }, 10);
   }
 
-  // 最初のボタンの状態 
+  // 最初のボタンの状態
   function setButtonStateInitial() {
-      start.disabled = false;
-      stop.disabled = true;
-      reset.disabled = true;
-      start.style.opacity = 1;
-      stop.style.opacity = 0.4;
-      reset.style.opacity = 0.4;
+    start.disabled = false;
+    stop.disabled = true;
+    reset.disabled = true;
+    start.style.opacity = 1;
+    stop.style.opacity = 0.4;
+    reset.style.opacity = 0.4;
   }
 
   // カウント中のボタンの状態
   function setButtonStateRunning() {
-      start.disabled = true;
-      stop.disabled = false;
-      reset.disabled = true;
-      start.style.opacity = 0.4;
-      stop.style.opacity = 1;
-      reset.style.opacity = 0.4;
+    start.disabled = true;
+    stop.disabled = false;
+    reset.disabled = true;
+    start.style.opacity = 0.4;
+    stop.style.opacity = 1;
+    reset.style.opacity = 0.4;
   }
 
   // カウントダウンが止まっている時のボタンの状態
   function setButtonStateStopped() {
-      start.disabled = false;
-      stop.disabled = true;
-      reset.disabled = false;
-      start.style.opacity = 1;
-      stop.style.opacity = 0.4;
-      reset.style.opacity = 1;
+    start.disabled = false;
+    stop.disabled = true;
+    reset.disabled = false;
+    start.style.opacity = 1;
+    stop.style.opacity = 0.4;
+    reset.style.opacity = 1;
   }
 
   setButtonStateInitial();
@@ -90,5 +104,12 @@
     elapsedTime = 0;
     countTimer.textContent = "00:05";
     comment.textContent = "Click Start";
+  });
+
+  // 休憩するボタンを押した時の処理
+  rest.addEventListener("click", () => {
+    timeLimit = 5;
+    start.click();
+    comment.textContent = "Rest Time";
   });
 }
