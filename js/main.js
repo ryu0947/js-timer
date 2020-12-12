@@ -31,9 +31,10 @@
     if (runningTime < 0) {
       clearTimeout(timeoutId);
       setButtonStateInitial();
-      
+
       switch (timeLimit) {
         case 5:
+            restartPopup.classList.add("show");
           break;
         case 10:
           restPopup.classList.add("show");
