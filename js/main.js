@@ -11,11 +11,13 @@
   const finish = document.getElementById("js-finish-btn");
   const restartPopup = document.getElementById("js-restart-popup");
   const restart = document.getElementById("js-restart-btn");
+  const totalTime = document.getElementById("js-total-time");
 
   let startTime;
   let timeLimit = 10;
   let timeoutId;
   let elapsedTime = 0;
+  let timeCount = 0;
 
   // タイマーを画面に書き出す処理
   function updateTimer(t) {
@@ -39,6 +41,7 @@
           restartPopup.classList.add("show");
           break;
         case 10:
+          calcTime();
           restPopup.classList.add("show");
           break;
       }
@@ -50,6 +53,13 @@
     timeoutId = setTimeout(() => {
       countUp();
     }, 10);
+  }
+
+  // 合計時間の算出
+  function calcTime() {
+    ++timeCount;
+    const calcTime = timeLimit * timeCount;
+    totalTime.textContent = `Total: ${calcTime}分`;
   }
 
   // 最初のボタンの状態
@@ -104,6 +114,7 @@
   reset.addEventListener("click", () => {
     setButtonStateInitial();
     elapsedTime = 0;
+    timeCount = 0;
     countTimer.textContent = "00:10";
     comment.textContent = "Click Start";
   });
@@ -119,6 +130,7 @@
   // 終了するボタンを押した時の処理
   finish.addEventListener("click", () => {
     restPopup.classList.remove("show");
+    timeCount = 0;
     countTimer.textContent = "00:10";
     comment.textContent = "Click Start";
   });
