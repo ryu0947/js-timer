@@ -12,12 +12,13 @@
   const restartPopup = document.getElementById("js-restart-popup");
   const restart = document.getElementById("js-restart-btn");
   const totalTime = document.getElementById("js-total-time");
+  const audio = document.getElementById("js-audio");
 
   let startTime;
   let timeLimit = 10;
   let timeoutId;
   let elapsedTime = 0;
-  let timeCount = 0;
+  let num = 0;
 
   // タイマーを画面に書き出す処理
   function updateTimer(t) {
@@ -35,7 +36,8 @@
     if (runningTime < 0) {
       clearTimeout(timeoutId);
       setButtonStateInitial();
-
+      elapsedTime = 0;
+      audio.play();
       switch (timeLimit) {
         case 5:
           restartPopup.classList.add("show");
@@ -47,7 +49,6 @@
       }
       return;
     }
-
     updateTimer(runningTime);
 
     timeoutId = setTimeout(() => {
@@ -57,9 +58,14 @@
 
   // 合計時間の算出
   function calcTime() {
-    ++timeCount;
-    const calcTime = timeLimit * timeCount;
+    ++num;
+    const calcTime = timeLimit * num;
     totalTime.textContent = `Total: ${calcTime}分`;
+  }
+
+  function stoppedSound() {
+    audio.pause();
+    audio.currentTime = 0;
   }
 
   // 最初のボタンの状態
@@ -114,7 +120,8 @@
   reset.addEventListener("click", () => {
     setButtonStateInitial();
     elapsedTime = 0;
-    timeCount = 0;
+    num = 0;
+    timeLimit = 10;
     countTimer.textContent = "00:10";
     comment.textContent = "Click Start";
   });
@@ -122,6 +129,7 @@
   // 休憩するボタンを押した時の処理
   rest.addEventListener("click", () => {
     timeLimit = 5;
+    stoppedSound();
     restPopup.classList.remove("show");
     start.click();
     comment.textContent = "Rest Time";
@@ -129,8 +137,9 @@
 
   // 終了するボタンを押した時の処理
   finish.addEventListener("click", () => {
+    num = 0;
+    stoppedSound();
     restPopup.classList.remove("show");
-    timeCount = 0;
     countTimer.textContent = "00:10";
     comment.textContent = "Click Start";
   });
@@ -138,6 +147,7 @@
   // 再開するボタンを押した時の処理
   restart.addEventListener("click", () => {
     timeLimit = 10;
+    stoppedSound();
     restartPopup.classList.remove("show");
     start.click();
     countTimer.textContent = "00:10";
