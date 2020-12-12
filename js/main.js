@@ -9,6 +9,8 @@
   const restPopup = document.getElementById("js-rest-popup");
   const rest = document.getElementById("js-rest-btn");
   const finish = document.getElementById("js-finish-btn");
+  const restartPopup = document.getElementById("js-restart-popup");
+  const restart = document.getElementById("js-restart-btn");
 
   let startTime;
   let timeLimit = 10;
@@ -34,13 +36,12 @@
 
       switch (timeLimit) {
         case 5:
-            restartPopup.classList.add("show");
+          restartPopup.classList.add("show");
           break;
         case 10:
           restPopup.classList.add("show");
           break;
       }
-      comment.textContent = "Select";
       return;
     }
 
@@ -103,14 +104,31 @@
   reset.addEventListener("click", () => {
     setButtonStateInitial();
     elapsedTime = 0;
-    countTimer.textContent = "00:05";
+    countTimer.textContent = "00:10";
     comment.textContent = "Click Start";
   });
 
   // 休憩するボタンを押した時の処理
   rest.addEventListener("click", () => {
     timeLimit = 5;
+    restPopup.classList.remove("show");
     start.click();
     comment.textContent = "Rest Time";
+  });
+
+  // 終了するボタンを押した時の処理
+  finish.addEventListener("click", () => {
+    restPopup.classList.remove("show");
+    countTimer.textContent = "00:10";
+    comment.textContent = "Click Start";
+  });
+
+  // 再開するボタンを押した時の処理
+  restart.addEventListener("click", () => {
+    timeLimit = 10;
+    restartPopup.classList.remove("show");
+    start.click();
+    countTimer.textContent = "00:10";
+    comment.textContent = "Working...";
   });
 }
