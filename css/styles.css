@@ -42,6 +42,11 @@ body {
   justify-content: space-between;
 }
 
+.btn-flex-center {
+  display: flex;
+  justify-content: center;
+}
+
 .popup-btn {
   width: 100px;
   text-align: center;
