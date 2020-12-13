@@ -15,7 +15,7 @@
   const audio = document.getElementById("js-audio");
 
   let startTime;
-  let timeLimit = 10;
+  let timeLimit = 25;
   let timeoutId;
   let elapsedTime = 0;
   let num = 0;
@@ -31,7 +31,7 @@
   // タイマーのカウントダウンの処理
   function countUp() {
     const runningTime =
-      timeLimit * 1000 - elapsedTime - (Date.now() - startTime);
+      timeLimit * 60 * 1000 - elapsedTime - (Date.now() - startTime);
 
     if (runningTime < 0) {
       clearTimeout(timeoutId);
@@ -122,8 +122,8 @@
     setButtonStateInitial();
     elapsedTime = 0;
     num = 0;
-    timeLimit = 10;
-    countTimer.textContent = "00:10";
+    timeLimit = 25;
+    countTimer.textContent = `${timeLimit}:00`;
     comment.textContent = "Click Start";
   });
 
@@ -141,17 +141,17 @@
     num = 0;
     stoppedSound();
     restPopup.classList.remove("show");
-    countTimer.textContent = "00:10";
+    countTimer.textContent = `${timeLimit}:00`;
     comment.textContent = "Click Start";
   });
 
   // 再開するボタンを押した時の処理
   restart.addEventListener("click", () => {
-    timeLimit = 10;
+    timeLimit = 25;
     stoppedSound();
     restartPopup.classList.remove("show");
     start.click();
-    countTimer.textContent = "00:10";
+    countTimer.textContent = `${timeLimit}:00`;
     comment.textContent = "Working...";
   });
 }
