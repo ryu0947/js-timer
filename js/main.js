@@ -62,7 +62,7 @@
     const calcTime = timeLimit * num;
     totalTime.textContent = `Total: ${calcTime}分`;
   }
-  
+
   // ボタンを押したら音を止める処理
   function stoppedSound() {
     audio.pause();
