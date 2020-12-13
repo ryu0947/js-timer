@@ -42,7 +42,7 @@
         case 5:
           restartPopup.classList.add("show");
           break;
-        case 10:
+        case 25:
           calcTime();
           restPopup.classList.add("show");
           break;
