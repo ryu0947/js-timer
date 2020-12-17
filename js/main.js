@@ -29,7 +29,7 @@
   }
 
   // タイマーのカウントダウンの処理
-  function countUp() {
+  function countDown() {
     const runningTime =
       timeLimit * 60 * 1000 - elapsedTime - (Date.now() - startTime);
 
@@ -52,8 +52,8 @@
     updateTimer(runningTime);
 
     timeoutId = setTimeout(() => {
-      countUp();
-    }, 10);
+      countDown();
+    }, 1000);
   }
 
   // 合計時間の算出
@@ -106,7 +106,7 @@
     setButtonStateRunning();
     startTime = Date.now();
     comment.textContent = "Working...";
-    countUp();
+    countDown();
   });
 
   // Stopボタンを押した時の処理
