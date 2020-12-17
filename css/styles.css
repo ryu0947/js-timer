@@ -52,14 +52,14 @@ body {
   text-align: center;
   padding: 12px 25px;
   background-color: #333333;
-  color: #fff;
+  color: rgb(59, 54, 54);
   cursor: pointer;
   user-select: none;
 }
 
 .popup-btn {
   background-color: #333333;
-  color: #fff;
+  color: #ffffff;
   user-select: none;
 }
 
