@@ -53,7 +53,7 @@
 
     timeoutId = setTimeout(() => {
       countDown();
-    }, 1000);
+    }, 100);
   }
 
   // 合計時間の算出
@@ -105,14 +105,14 @@
   start.addEventListener("click", () => {
     setButtonStateRunning();
     startTime = Date.now();
-    comment.textContent = "Working...";
     countDown();
+    comment.textContent = "Working...";
   });
 
   // Stopボタンを押した時の処理
   stop.addEventListener("click", () => {
-    setButtonStateStopped();
     clearTimeout(timeoutId);
+    setButtonStateStopped();
     elapsedTime += Date.now() - startTime;
     comment.textContent = "Stop";
   });
@@ -129,29 +129,30 @@
 
   // 休憩するボタンを押した時の処理
   rest.addEventListener("click", () => {
-    timeLimit = 5;
-    stoppedSound();
     restPopup.classList.remove("show");
+    stoppedSound();
+    timeLimit = 5;
+    countTimer.textContent = `${timeLimit}:00`;
     start.click();
     comment.textContent = "Rest Time";
   });
 
   // 終了するボタンを押した時の処理
   finish.addEventListener("click", () => {
-    num = 0;
-    stoppedSound();
     restPopup.classList.remove("show");
+    stoppedSound();
+    num = 0;
     countTimer.textContent = `${timeLimit}:00`;
     comment.textContent = "Click Start";
   });
 
   // 再開するボタンを押した時の処理
   restart.addEventListener("click", () => {
-    timeLimit = 25;
-    stoppedSound();
     restartPopup.classList.remove("show");
-    start.click();
+    stoppedSound();
+    timeLimit = 25;
     countTimer.textContent = `${timeLimit}:00`;
+    start.click();
     comment.textContent = "Working...";
   });
 }
