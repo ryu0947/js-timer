@@ -35,7 +35,7 @@
 
     if (runningTime < 0) {
       clearTimeout(timeoutId);
-      setButtonStateInitial();
+      initButtonState();
       elapsedTime = 0;
       audio.play();
       switch (timeLimit) {
@@ -70,7 +70,7 @@
   }
 
   // 最初のボタンの状態
-  function setButtonStateInitial() {
+  function initButtonState() {
     start.disabled = false;
     stop.disabled = true;
     reset.disabled = true;
@@ -99,7 +99,7 @@
     reset.style.opacity = 1;
   }
 
-  setButtonStateInitial();
+  initButtonState();
 
   // Startボタンを押した時の処理
   start.addEventListener("click", () => {
@@ -119,7 +119,7 @@
 
   // Resetボタンを押した時の処理
   reset.addEventListener("click", () => {
-    setButtonStateInitial();
+    initButtonState();
     elapsedTime = 0;
     num = 0;
     timeLimit = 25;
