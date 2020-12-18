@@ -53,7 +53,7 @@
 
     timeoutId = setTimeout(() => {
       countDown();
-    }, 100);
+    }, 1000);
   }
 
   // 合計時間の算出
