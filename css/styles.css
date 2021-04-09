@@ -48,18 +48,11 @@ body {
 }
 
 .popup-btn {
-  width: 100px;
   text-align: center;
-  padding: 12px 25px;
-  background-color: #333333;
-  color: rgb(59, 54, 54);
-  cursor: pointer;
-  user-select: none;
-}
-
-.popup-btn {
-  background-color: #333333;
+  padding: 12px 30px;
+  background: #333333;
   color: #ffffff;
+  cursor: pointer;
   user-select: none;
 }
 
@@ -80,6 +73,9 @@ button {
   appearance: none;
   user-select: none;
   cursor: pointer;
+}
+
+.timer-btn {
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 0.1em;
