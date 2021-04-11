@@ -4,6 +4,8 @@
 
 # デモ
 
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/70193248/114305857-e2b38880-9b14-11eb-9ff4-fd0773e5418f.gif)
+
 # 概要
 
 JavaScriptで25分の学習と5分の休憩を繰り返すポモドーロタイマーを作りました。
